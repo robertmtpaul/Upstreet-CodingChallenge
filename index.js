@@ -23,6 +23,17 @@ async function doKyc(BirthDate, GivenName, MiddleName, FamilyName, LicenceNumber
     if (response.verificationResultCode === "N") {
         console.log('False')
         return false
+    } else if (response.verificationResultCode === "D") {
+        throw {
+            code: "D",
+            message: "Document Error"
+        }
+
+    } else if (response.verificationResultCode === "S") {
+        throw {
+            code: "S",
+            message: "Server Error"
+        }
     } else {
         return true
     }
