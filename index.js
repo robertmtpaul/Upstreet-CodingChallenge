@@ -42,11 +42,3 @@ async function doKyc(BirthDate, GivenName, MiddleName, FamilyName, LicenceNumber
     }
 
 }
-
-const { doKycCheck } = require('/wherever ur node file is');
-jest.mock('axios');
-it('returns DriverLicenseResponse', async() => {
-    axios.post.mockResolvedValue({ data: 'and shit lives in here' });
-    const response = await doKycCheck('props in here');
-    expect(response).toDeepEqual({ data: 'and shit lives in here' });
-});
