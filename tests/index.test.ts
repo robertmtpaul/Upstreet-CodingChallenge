@@ -1,26 +1,16 @@
+import axios from 'axios';
 jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-const { doKycCheck } = require('../index.js');
-jest.mock('axios');
+import { doKycCheck } from '../index';
 it('returns true', async() => {
     expect(true).toBe(true);
 });
 
 
-// it('returns DriverLicenseResponse', async() => {
-//         axios.post.mockResolvedValue({
-//                 data: [{
-//                         verifyDocumentResult: {
-//                             type: "DriverLicenceResponse"
-//                         },
-//                         {
-//                             verificationRequestNumber: 00000,
-//                             verificationResultCode: "N"
-//                         }
-//                     ]
-//                 });
+it('should mock something', async () => {
+    axios.post.mockResolvedValue({ data: 'moo cow' });
+    const response = await doKycCheck();
+    expect(response).toEqual({ data: 'moo cow'});
+  });
 
-//             const type = await getRequestType(); expect(type).toEqual('DriverLicenseResponse');
-
-//         });
-// }
