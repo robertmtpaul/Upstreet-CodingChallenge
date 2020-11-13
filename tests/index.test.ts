@@ -1,3 +1,8 @@
+// I am still learning how to use Jest for unit testing and 
+// unfortunately was not able to add all code that I wanted. 
+// I am confident that I can use this exercise as a starting 
+// point to learn more about testing in Node.js!
+
 import axios from 'axios';
 jest.mock('axios');
 // Assign typed mock to new variable
