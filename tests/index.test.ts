@@ -22,7 +22,7 @@ it('submits a date of birth ', async () => {
         }
       });
     const response = await doKycCheck();
-    expect(response).toBe("1985-02-08")
+    expect(response).toEqual("1985-02-08")
     });
 
 // Check if a given name is sent in axios post request
@@ -33,11 +33,26 @@ it('submits a given name', async()=> {
         }
     });
     const response = await doKycCheck();
-    expect(response).toBe({
+    expect(response).toEqual({
         data: {
             "givenName" : "James"
         }
     });
 });
 
+// Check if middle name is sent in axios post request.
+
+it('submits a middle name', async()=> {
+    mockedAxios.post.mockResolvedValue({
+        data: {
+            "middleName" : "Robert"
+        }
+    });
+    const response = await doKycCheck();
+    expect(response).toEqual({
+        data: {
+            "middleName" : "Robert"
+        }
+    });
+});
 // TODO: add tests for remaining fields.
